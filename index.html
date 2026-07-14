@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cullé Traveling - Snorkeling & Gommone a La Maddalena</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk & Outfit per un look tech-moderno ma giocoso -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (tramite SVG) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        maddalena: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#115e59',
+                        },
+                        sardinia: {
+                            orange: '#f97316',
+                            dark: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-gradient {
+            background: linear-gradient(135deg, #115e59 0%, #0f172a 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-maddalena-500 selection:text-white">
+
+    <!-- NAVIGATION -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <!-- SVG Logo -->
+                <div class="w-10 h-10 bg-maddalena-500 rounded-xl flex items-center justify-center text-white font-display font-bold text-xl shadow-lg shadow-maddalena-500/20">
+                    C
+                </div>
+                <div>
+                    <span class="font-display font-bold text-lg sm:text-xl tracking-tight text-slate-900">Cullé</span>
+                    <span class="text-maddalena-500 font-light text-sm block -mt-1 tracking-widest uppercase">Traveling</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#il-mezzo" class="hover:text-maddalena-600 transition-colors">La Flotta</a>
+                <a href="#snorkeling" class="hover:text-maddalena-600 transition-colors">Il Finto Snorkeling</a>
+                <a href="#comandante" class="hover:text-maddalena-600 transition-colors">Il Comandante</a>
+                <a href="#galleggiometro" class="hover:text-maddalena-600 transition-colors">Galleggiometro</a>
+                <a href="#tariffe" class="hover:text-maddalena-600 transition-colors">Piani & Rinfreschi</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button onclick="openBookingModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+                    Sali a Bordo!
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-white">
+        <!-- Background decorative vectors -->
+        <div class="absolute inset-0 z-0 pointer-events-none opacity-40">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-maddalena-100 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 -left-20 w-80 h-80 bg-emerald-100 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column (Copy) -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-maddalena-50 text-maddalena-600 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase border border-maddalena-100">
+                        <span>🌊 Omologato per 4 persone (forse 5 se magre)</span>
+                    </div>
+
+                    <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-950 tracking-tight leading-none">
+                        La Maddalena come non l'hai <span class="text-transparent bg-clip-text bg-gradient-to-r from-maddalena-500 to-emerald-600">mai vista.</span><br>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-normal text-slate-600">Principalmente perché saremo raso acqua.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0">
+                        Niente yacht principeschi o mostri di 15 metri. <strong>Cullé Traveling</strong> ti offre l'autentica, traballante ed epica esperienza di un gommone di 5 metri netti. Guidati dall'unico, inimitabile e leggermente abbronzato <strong>Comandante Capo A Punta</strong>.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto bg-maddalena-500 hover:bg-maddalena-600 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-maddalena-500/20 transition-all hover:-translate-y-1">
+                            Prenota Escursione Ansiosa
+                        </button>
+                        <a href="#galleggiometro" class="w-full sm:w-auto text-center border-2 border-slate-200 hover:border-slate-800 text-slate-800 font-bold px-8 py-4 rounded-2xl transition-all">
+                            Testa Galleggiabilità
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats with Irony -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-100 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-display font-bold text-slate-900">5.00m</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider">Lunghezza Gommone</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-display font-bold text-slate-900">40 CV</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider">Senza Patente (ma guida lui)</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-display font-bold text-slate-900">99.2%</span>
+                            <span class="text-xs text-slate-500 uppercase tracking-wider">Ritorno a riva intatti</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (The Vessel Visual) -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-[400px] lg:max-w-none">
+                        <!-- Background glow -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-maddalena-500 to-emerald-400 rounded-3xl rotate-3 scale-95 opacity-20 blur-lg"></div>
+                        
+                        <!-- Main Card -->
+                        <div class="relative bg-slate-900 rounded-3xl p-4 sm:p-6 text-white shadow-2xl border border-slate-800 overflow-hidden">
+                            <!-- Image container (Simulating 5m dinghy) -->
+                            <div class="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Gommone piccolo a La Maddalena" 
+                                     class="object-cover w-full h-full opacity-80 hover:scale-105 transition-transform duration-700"
+                                     onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'">
+                                <div class="absolute top-3 left-3 bg-red-500 text-white text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded">
+                                    Piccolo ma Tenace
+                                </div>
+                            </div>
+
+                            <!-- Vessel Spec Card -->
+                            <div class="mt-6 space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="font-display font-bold text-lg text-emerald-400">"La Sgricia 1"</h3>
+                                    <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">Modello 2008 sbiadito</span>
+                                </div>
+                                
+                                <p class="text-sm text-slate-300">
+                                    Dotato di tubolari leggermente porosi e tendalino che sopra i 12 nodi si trasforma in una vela incontrollabile. Comfort spartano, emozioni stellari.
+                                </p>
+
+                                <div class="space-y-2 pt-2 border-t border-slate-800 text-xs text-slate-400">
+                                    <div class="flex justify-between">
+                                        <span>Ancora:</span>
+                                        <span class="text-white font-medium">Sì (manuale, tira l'ospite)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Doccetta:</span>
+                                        <span class="text-white font-medium">Funzionante (acqua a temp. vulcano)</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Musica:</span>
+                                        <span class="text-white font-medium">Cassa Bluetooth scarica dal 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- IL MEZZO - Dettagli Ilaranti -->
+    <section id="il-mezzo" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-emerald-400">Perché 5 metri è la misura perfetta?</h2>
+                <p class="text-slate-400">
+                    Gli yacht giganti non entrano nelle calette segrete. Noi non solo entriamo, ma possiamo letteralmente grattare gli scogli per farti sentire più vicino alla natura sarda.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-2">Zero Tasse di Ormeggio</h3>
+                    <p class="text-slate-400 text-sm">
+                        Siamo così piccoli che i porti turistici ci scambiano per un parabordo scappato da un'altra nave. Di conseguenza, parcheggiamo ovunque gratis.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-2">Propulsione Ecologica (Quasi)</h3>
+                    <p class="text-slate-400 text-sm">
+                        Il nostro motore consuma talmente poco che a volte sospettiamo vada a risate e preghiere collettive quando il vento di maestrale sale d'intensità.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white mb-2">Contatto Umano Massimo</h3>
+                    <p class="text-slate-400 text-sm">
+                        Su 5 metri di gommone è fisicamente impossibile non fare amicizia. Le tue ginocchia toccheranno quelle di perfetti sconosciuti per l'intera giornata. Amore garantito.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUIDED SNORKELING EXPERIENCE -->
+    <section id="snorkeling" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left: Illustration / Image -->
+                <div class="lg:col-span-5 order-last lg:order-first">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-maddalena-500 rounded-3xl blur opacity-30"></div>
+                        <div class="relative bg-white p-4 rounded-3xl shadow-xl">
+                            <div class="h-80 rounded-2xl overflow-hidden bg-slate-100">
+                                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Snorkeling La Maddalena guidato" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'">
+                            </div>
+                            <!-- Floating interactive tag -->
+                            <div class="absolute -bottom-6 -right-6 bg-sardinia-orange text-white p-4 rounded-2xl shadow-lg max-w-[200px] text-center transform rotate-3">
+                                <span class="block text-xs font-bold uppercase tracking-wider">Dotazione Inclusa</span>
+                                <span class="block font-display font-bold text-lg">Maschere Decathlon leggermente graffiate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Copy -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        🐠 Snorkeling Altamente "Guidato"
+                    </div>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-900">
+                        La nostra idea di Snorkeling? Il Comandante che indica i pesci urlando.
+                    </h2>
+                    <p class="text-slate-600 text-base sm:text-lg">
+                        Dimentica le noiose spiegazioni biologiche marine accademiche. Le nostre guide snorkeling consistono nel <strong>Comandante Capo A Punta</strong> che, comodamente seduto sul gommone all'ombra, punta il dito verso l'acqua cristallina strillando:
+                    </p>
+                    
+                    <blockquote class="border-l-4 border-maddalena-500 pl-4 py-2 italic text-slate-700 bg-maddalena-50/50 rounded-r-lg">
+                        "Guarda lì, c'è un'occhiata! O forse è un pezzo di plastica luccicante! Buttati veloce, muoviti!"
+                    </blockquote>
+
+                    <!-- List of snorkeling highlights -->
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4 text-sm text-slate-600">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-maddalena-500 font-bold">✔</span>
+                            <span>Pinne spaiate taglia media (38-45 adattabili)</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-maddalena-500 font-bold">✔</span>
+                            <span>Boccagli sterilizzati con mirto locale di fine giornata</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-maddalena-500 font-bold">✔</span>
+                            <span>Avvistamenti garantiti di ricci di mare (dolorosamente autentici)</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-maddalena-500 font-bold">✔</span>
+                            <span>Nuotate rincorrendo il gommone che si sposta col vento</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EL COMANDANTE CAPO A PUNTA PROFILE -->
+    <section id="comandante" class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-slate-900 to-slate-950 rounded-[2.5rem] p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden">
+                <!-- Background ambient glow -->
+                <div class="absolute -right-1/4 -bottom-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+                    
+                    <!-- Bio Copy -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-emerald-500/30">
+                            ⚓ Profilo dell'Armatore
+                        </div>
+                        <h2 class="font-display font-bold text-3xl sm:text-5xl tracking-tight">
+                            Comandante Capo A Punta
+                        </h2>
+                        <p class="text-slate-300 text-base sm:text-lg">
+                            Ex pescatore di polpi, ex filosofo da bar, attuale padrone assoluto dei 5 metri quadri calpestabili della nostra flotta. Il Comandante Capo A Punta vanta oltre 43 anni di esperienza nel navigare "a occhio".
+                        </p>
+                        <p class="text-slate-400 text-sm">
+                            Non possiede un GPS moderno perché "il sole sorge là e tramonta di qua, cos'altro ti serve?". In compenso, conosce ogni singola roccia sommersa dell'Arcipelago, principalmente perché le ha colpite tutte almeno una volta durante la sua giovinezza.
+                        </p>
+
+                        <!-- Funny Quotes Accordion -->
+                        <div class="space-y-3 pt-4 border-t border-slate-800">
+                            <h4 class="text-xs uppercase tracking-widest text-slate-500 font-bold">La Filosofia del Comandante:</h4>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                                    <p class="text-xs text-slate-400">Sul meteo avverso:</p>
+                                    <p class="text-sm font-semibold text-emerald-400">"Se c'è Maestrale, andiamo lo stesso? Certo che no, ci fermiamo al bar del porto e ti spiego la teoria."</p>
+                                </div>
+                                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                                    <p class="text-xs text-slate-400 Sulla sicurezza:</p>
+                                    <p class="text-sm font-semibold text-emerald-400">"I giubbotti salvagente ci sono. Fanno anche da ottimi cuscini se hai mal di schiena."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo Placeholder & Fun Specs -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 space-y-6 shadow-xl max-w-[380px] mx-auto lg:max-w-none">
+                            <div class="relative h-64 rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" 
+                                     alt="Comandante Capo A Punta" 
+                                     class="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
+                                <div class="absolute bottom-3 left-3 bg-slate-900/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs text-slate-300">
+                                    Foto di repertorio (circa 2025, prima del grande sole)
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-400">Tasso di Abbronzatura:</span>
+                                    <span class="text-emerald-400 font-bold">110% (Cuoio Antico)</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-400">Stile di Guida:</span>
+                                    <span class="text-emerald-400 font-bold">Spericolato ma Consapevole</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-400">Storie raccontate a escursione:</span>
+                                    <span class="text-emerald-400 font-bold">Sempre le stesse 3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLEGGIOMETRO - Interactive Tool -->
+    <section id="galleggiometro" class="py-20 bg-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200">
+                <div class="text-center space-y-4 mb-8">
+                    <span class="text-3xl">⚖</span>
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl text-slate-950">Il Galleggiometro di Capo A Punta</h2>
+                    <p class="text-slate-600 text-sm max-w-xl mx-auto">
+                        In quanto gommone di 5 metri, il carico scientifico è fondamentale. Calcola subito se la tua comitiva rischia di far toccare il fondo ai tubolari o se navigheremo sicuri!
+                    </p>
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="space-y-6">
+                    <!-- Passengers Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-bold text-slate-700">Numero di Passeggeri (Max 6 amici intimi):</label>
+                            <span id="pax-val" class="text-emerald-600 font-bold font-display text-lg">4</span>
+                        </div>
+                        <input type="range" id="pax-range" min="1" max="6" value="4" oninput="calculateBuoyancy()"
+                               class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-maddalena-500">
+                    </div>
+
+                    <!-- Food selection -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Pecorini Sardi a bordo (unità):</label>
+                            <input type="number" id="cheese-qty" value="2" min="0" max="10" oninput="calculateBuoyancy()"
+                                   class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-maddalena-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Litri di Mirto Gelato nello zaino:</label>
+                            <input type="number" id="mirto-qty" value="3" min="0" max="15" oninput="calculateBuoyancy()"
+                                   class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-maddalena-500 outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Wind Factor -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Stato d'Animo del Maestrale:</label>
+                        <select id="wind-status" onchange="calculateBuoyancy()" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-maddalena-500 outline-none">
+                            <option value="calm">Calmo Piatto (Miracolo)</option>
+                            <option value="breeze" selected>Brezza che spettina ma rinfresca</option>
+                            <option value="heavy">Maestrale Forte (L'Escursione si sposta al Bar)</option>
+                        </select>
+                    </div>
+
+                    <!-- Output Box -->
+                    <div class="p-6 rounded-2xl bg-slate-900 text-white mt-8 transition-all duration-300">
+                        <h4 class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-2">Diagnosi del Comandante:</h4>
+                        
+                        <div class="flex items-center space-x-4">
+                            <!-- Visual gauge -->
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-xl transition-all duration-500" id="gauge-circle">
+                                85%
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-display font-bold text-lg" id="status-title">Navigazione Perfetta</div>
+                                <p class="text-slate-300 text-xs" id="status-desc">
+                                    Il gommone è in perfetto assetto. C'è spazio anche per un salame in più.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFFS & REFRESHMENTS -->
+    <section id="tariffe" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-emerald-500 font-bold uppercase tracking-wider text-xs">Piani Onesti</span>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-950">Scegli il tuo livello di disagio</h2>
+                <p class="text-slate-600">
+                    Nessun costo nascosto. Tutto è proporzionale a quanti schizzi d'acqua salata vuoi prenderti in faccia.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <!-- Tier 1 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between hover:border-maddalena-500 transition-all">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="bg-slate-200 text-slate-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Pacco Base</span>
+                            <h3 class="font-display font-bold text-2xl text-slate-950 mt-4">L'Ipoplasia</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Sali sul gommone, trovi posto su un tubulare bollente e vieni trasportato alle calette. Nessun lusso, solo pura brezza marina.
+                        </p>
+                        <div class="font-display font-bold text-4xl text-slate-900">
+                            €45 <span class="text-xs text-slate-500 font-sans font-normal">/ passeggero</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 border-t border-slate-200 pt-6">
+                            <li>✔ Trasporto di 5 metri netti</li>
+                            <li>✔ Ombra del Comandante (parziale)</li>
+                            <li>❌ Niente rinfresco (portati l'acqua)</li>
+                            <li>❌ Niente mirto di conforto</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl mt-8 transition-colors">
+                        Prenota Base
+                    </button>
+                </div>
+
+                <!-- Tier 2 (Popular) -->
+                <div class="bg-white rounded-3xl p-8 border-2 border-emerald-500 flex flex-col justify-between shadow-xl relative transform lg:-translate-y-4">
+                    <div class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                        Consigliato da Capo A Punta
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <span class="bg-emerald-50 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Pacco Premium</span>
+                            <h3 class="font-display font-bold text-2xl text-slate-950 mt-4">Il Sardo Autentico</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Include il leggendario "rinfresco di bordo" a base di prodotti locali che stazionano nel frigo portatile del 1999.
+                        </p>
+                        <div class="font-display font-bold text-4xl text-slate-900">
+                            €75 <span class="text-xs text-slate-500 font-sans font-normal">/ passeggero</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 border-t border-slate-200 pt-6">
+                            <li>✔ Trasporto sul gommone leggendario</li>
+                            <li>✔ Maschera da snorkeling Graffiata inclusa</li>
+                            <li>✔ <strong>Pezzo di Pecorino sardo tiepido</strong></li>
+                            <li>✔ <strong>Un bicchierino di Mirto Gelido</strong></li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-xl mt-8 transition-all shadow-lg shadow-emerald-500/20">
+                        Voglio il Pecorino!
+                    </button>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 flex flex-col justify-between hover:border-maddalena-500 transition-all">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="bg-slate-200 text-slate-800 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Pacco Extralusso</span>
+                            <h3 class="font-display font-bold text-2xl text-slate-950 mt-4">Comandante Onorario</h3>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Per veri avventurieri che non temono la fatica e desiderano sentirsi parte integrante dell'equipaggio.
+                        </p>
+                        <div class="font-display font-bold text-4xl text-slate-900">
+                            €120 <span class="text-xs text-slate-500 font-sans font-normal">/ passeggero</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 border-t border-slate-200 pt-6">
+                            <li>✔ Tutti i vantaggi del pacco Premium</li>
+                            <li>✔ <strong>Il privilegio di tirare su l'ancora a mano</strong></li>
+                            <li>✔ Puoi tenere il timone per ben 2 minuti</li>
+                            <li>✔ Bottiglia di Mirto intera (da condividere col comandante)</li>
+                        </ul>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl mt-8 transition-colors">
+                        Sali in Cattedra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CTA -->
+    <footer class="bg-slate-950 text-white py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-12">
+            
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-maddalena-500 rounded-lg flex items-center justify-center text-white font-display font-bold">
+                        C
+                    </div>
+                    <span class="font-display font-bold text-lg">Cullé Traveling</span>
+                </div>
+                <p class="text-sm text-slate-400 max-w-sm">
+                    Escursioni marine non convenzionali e snorkeling ansioso nell'arcipelago di La Maddalena. Nessun lusso, solo divertimento puro e autentico sale sulla pelle.
+                </p>
+                <p class="text-xs text-slate-600">
+                    *Questo sito è una splendida opera di finzione e ironia. Le escursioni non esistono, ma il Comandante Capo A Punta vive nei nostri cuori sardi.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-display font-bold text-sm uppercase tracking-widest text-emerald-400 mb-4">Naviga</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li><a href="#il-mezzo" class="hover:text-white transition-colors">Il Gommone 5m</a></li>
+                    <li><a href="#snorkeling" class="hover:text-white transition-colors">Snorkeling Comico</a></li>
+                    <li><a href="#comandante" class="hover:text-white transition-colors">Capo A Punta</a></li>
+                    <li><a href="#galleggiometro" class="hover:text-white transition-colors">Test Galleggiometro</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-display font-bold text-sm uppercase tracking-widest text-emerald-400 mb-4">Cullé Headquarters</h4>
+                <p class="text-sm text-slate-400">
+                    Chiosco del Porto di Palau,<br>
+                    Tavolo d'angolo vicino alla spillatrice.<br>
+                    Sardegna, Italia.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+            <p>© 2026 Cullé Traveling Inc. Progettato con feroce ironia e stile moderno da un Web Dev vero.</p>
+        </div>
+    </footer>
+
+
+    <!-- BOOKING MODAL (Customized & Responsive) -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden transition-all duration-300 opacity-0">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl relative border border-slate-100 transform scale-95 transition-transform duration-300" id="modal-container">
+            
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="text-center space-y-2">
+                <span class="text-3xl">⛵</span>
+                <h3 class="font-display font-bold text-2xl text-slate-950">Arruolati con Capo A Punta</h3>
+                <p class="text-xs text-slate-500">
+                    Compila questo modulo per metterti in contatto col Comandante. Se non c'è vento, potrebbe risponderti entro sera.
+                </p>
+            </div>
+
+            <form class="space-y-4" onsubmit="submitBooking(event)">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Il tuo Nome / Pseudonimo:</label>
+                    <input type="text" required placeholder="Es. Salvatore l'Intrepido" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-maddalena-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Numero di Coraggiosi (Max 6):</label>
+                    <input type="number" required min="1" max="6" value="4" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-maddalena-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Livello di tolleranza spruzzi d'acqua:</label>
+                    <select class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-maddalena-500 outline-none">
+                        <option>Voglio stare asciutto (Scegli un traghetto vero allora)</option>
+                        <option selected>Spruzzami moderatamente</option>
+                        <option>Amianto d'acqua (Pronto alla tempesta)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Note / Promesse di Mirto Extra:</label>
+                    <textarea placeholder="Scrivi qui se hai paura dei polpi..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-maddalena-500 outline-none h-20 resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-maddalena-500 hover:bg-maddalena-600 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-maddalena-500/20">
+                    Invia Richiesta al Chiosco
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOOKING CONFIRMED MODAL -->
+    <div id="confirmed-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden transition-all duration-300">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-sm w-full p-8 text-center space-y-6 shadow-2xl relative border border-slate-800">
+            <span class="text-5xl block animate-bounce">🍺</span>
+            <h3 class="font-display font-bold text-2xl text-emerald-400">Richiesta Ricevuta!</h3>
+            <p class="text-sm text-slate-300">
+                Il Comandante Capo A Punta ha ricevuto il tuo segnale di fumo. Al momento sta pulendo un polpo al porto. Ti contatterà presto (o si berrà la provvigione).
+            </p>
+            <button onclick="closeConfirmedModal()" class="bg-white text-slate-900 font-bold px-6 py-2.5 rounded-xl text-sm transition-colors hover:bg-slate-100">
+                Ottimo, aspetterò al bar
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // MODAL MANAGEMENT
+        function openBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            const container = document.getElementById('modal-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            const container = document.getElementById('modal-container');
+            modal.classList.remove('opacity-100');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            closeBookingModal();
+            setTimeout(() => {
+                const confModal = document.getElementById('confirmed-modal');
+                confModal.classList.remove('hidden');
+            }, 300);
+        }
+
+        function closeConfirmedModal() {
+            document.getElementById('confirmed-modal').classList.add('hidden');
+        }
+
+        // BUOYANCY CALCULATOR LOGIC
+        function calculateBuoyancy() {
+            const pax = parseInt(document.getElementById('pax-range').value);
+            document.getElementById('pax-val').innerText = pax;
+
+            const cheese = parseInt(document.getElementById('cheese-qty').value) || 0;
+            const mirto = parseInt(document.getElementById('mirto-qty').value) || 0;
+            const wind = document.getElementById('wind-status').value;
+
+            // Simple ironic formula to calculate buoyancy %
+            let baseScore = 100;
+            
+            // Subtract weight points
+            baseScore -= (pax * 12);
+            baseScore -= (cheese * 2);
+            baseScore -= (mirto * 1.5);
+
+            if (wind === 'heavy') {
+                baseScore -= 40;
+            } else if (wind === 'breeze') {
+                baseScore -= 10;
+            }
+
+            // Clamping
+            baseScore = Math.max(0, Math.min(100, baseScore));
+
+            const gauge = document.getElementById('gauge-circle');
+            const title = document.getElementById('status-title');
+            const desc = document.getElementById('status-desc');
+
+            gauge.innerText = baseScore + '%';
+
+            // Custom UI changes based on buoyancy status
+            if (baseScore >= 75) {
+                gauge.className = "w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-xl transition-all duration-300 bg-emerald-500 text-white";
+                title.innerText = "Galleggiabilità Perfetta";
+                title.className = "font-display font-bold text-lg text-emerald-400";
+                desc.innerText = "Il gommone fende le onde sarde con agilità felina. C'è spazio pure per un cinghialetto arrosto.";
+            } else if (baseScore >= 45 && baseScore < 75) {
+                gauge.className = "w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-xl transition-all duration-300 bg-orange-500 text-white";
+                title.innerText = "Stabilità di Confine";
+                title.className = "font-display font-bold text-lg text-orange-400";
+                desc.innerText = "Siamo al limite. Non fare movimenti bruschi o rischiamo di imbarcare l'acqua della caletta del Cavaliere.";
+            } else {
+                gauge.className = "w-16 h-16 rounded-full flex items-center justify-center font-display font-bold text-xl transition-all duration-300 bg-red-600 text-white animate-pulse";
+                title.innerText = "Sottomarino Temporaneo";
+                title.className = "font-display font-bold text-lg text-red-500";
+                desc.innerText = "Troppi passeggeri o troppi formaggi! Capo A Punta consiglia di abbandonare qualcuno a riva o ridurre il mirto prima di affondare.";
+            }
+        }
+
+        // Initialize state
+        window.onload = function() {
+            calculateBuoyancy();
+        }
+    </script>
+</body>
+</html>
